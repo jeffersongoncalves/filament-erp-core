@@ -2,10 +2,8 @@
 
 namespace JeffersonGoncalves\FilamentErp\Core\Resources\Companies;
 
-use BackedEnum;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Core\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Core\FilamentErpCorePlugin;
@@ -19,7 +17,7 @@ use JeffersonGoncalves\FilamentErp\Core\Resources\Companies\Tables\CompaniesTabl
 
 class CompanyResource extends Resource
 {
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBuildingOffice2;
+    protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
 
     protected static ?int $navigationSort = 1;
 
@@ -39,9 +37,9 @@ class CompanyResource extends Resource
         }
     }
 
-    public static function form(Schema $schema): Schema
+    public static function form(Form $form): Form
     {
-        return CompanyForm::configure($schema);
+        return CompanyForm::configure($form);
     }
 
     public static function table(Table $table): Table
