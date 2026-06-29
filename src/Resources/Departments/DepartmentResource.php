@@ -2,10 +2,8 @@
 
 namespace JeffersonGoncalves\FilamentErp\Core\Resources\Departments;
 
-use BackedEnum;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Core\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Core\FilamentErpCorePlugin;
@@ -17,7 +15,7 @@ use JeffersonGoncalves\FilamentErp\Core\Resources\Departments\Tables\Departments
 
 class DepartmentResource extends Resource
 {
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleGroup;
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-group';
 
     protected static ?int $navigationSort = 5;
 
@@ -37,9 +35,9 @@ class DepartmentResource extends Resource
         }
     }
 
-    public static function form(Schema $schema): Schema
+    public static function form(Form $form): Form
     {
-        return DepartmentForm::configure($schema);
+        return DepartmentForm::configure($form);
     }
 
     public static function table(Table $table): Table
