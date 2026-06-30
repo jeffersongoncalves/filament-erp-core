@@ -2,7 +2,7 @@
 
 namespace JeffersonGoncalves\FilamentErp\Core\Resources\Uoms\Tables;
 
-use Filament\Actions;
+use Filament\Tables\Actions;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
@@ -29,11 +29,11 @@ class UomsTable
                 TernaryFilter::make('must_be_whole_number')
                     ->label('Must Be Whole Number'),
             ])
-            ->recordActions([
+            ->actions([
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])
-            ->toolbarActions([
+            ->bulkActions([
                 Actions\BulkActionGroup::make([
                     Actions\DeleteBulkAction::make(),
                 ]),
