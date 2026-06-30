@@ -2,8 +2,10 @@
 
 namespace JeffersonGoncalves\FilamentErp\Core\Resources\Uoms;
 
-use Filament\Forms\Form;
+use BackedEnum;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Core\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Core\FilamentErpCorePlugin;
@@ -15,7 +17,7 @@ use JeffersonGoncalves\FilamentErp\Core\Resources\Uoms\Tables\UomsTable;
 
 class UomResource extends Resource
 {
-    protected static ?string $navigationIcon = 'heroicon-o-scale';
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedScale;
 
     protected static ?int $navigationSort = 3;
 
@@ -45,9 +47,9 @@ class UomResource extends Resource
         }
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return UomForm::configure($form);
+        return UomForm::configure($schema);
     }
 
     public static function table(Table $table): Table
