@@ -2,8 +2,10 @@
 
 namespace JeffersonGoncalves\FilamentErp\Core\Resources\Brands;
 
-use Filament\Forms\Form;
+use BackedEnum;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Core\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Core\FilamentErpCorePlugin;
@@ -15,7 +17,7 @@ use JeffersonGoncalves\FilamentErp\Core\Resources\Brands\Tables\BrandsTable;
 
 class BrandResource extends Resource
 {
-    protected static ?string $navigationIcon = 'heroicon-o-tag';
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedTag;
 
     protected static ?int $navigationSort = 7;
 
@@ -35,9 +37,9 @@ class BrandResource extends Resource
         }
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return BrandForm::configure($form);
+        return BrandForm::configure($schema);
     }
 
     public static function table(Table $table): Table

@@ -2,7 +2,7 @@
 
 namespace JeffersonGoncalves\FilamentErp\Core\Resources\FiscalYears\Tables;
 
-use Filament\Tables\Actions;
+use Filament\Actions;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TernaryFilter;
@@ -34,11 +34,11 @@ class FiscalYearsTable
                 TernaryFilter::make('is_short_year')
                     ->label('Is Short Year'),
             ])
-            ->actions([
+            ->recordActions([
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])
-            ->bulkActions([
+            ->toolbarActions([
                 Actions\BulkActionGroup::make([
                     Actions\DeleteBulkAction::make(),
                 ]),

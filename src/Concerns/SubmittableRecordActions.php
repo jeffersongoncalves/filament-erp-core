@@ -3,8 +3,9 @@
 namespace JeffersonGoncalves\FilamentErp\Core\Concerns;
 
 use DomainException;
+use Filament\Actions\Action;
 use Filament\Notifications\Notification;
-use Filament\Tables\Actions\Action;
+use Filament\Support\Icons\Heroicon;
 use Illuminate\Database\Eloquent\Model;
 use JeffersonGoncalves\Erp\Core\Contracts\SubmittableDocument;
 use JeffersonGoncalves\Erp\Core\Enums\DocStatus;
@@ -29,7 +30,7 @@ trait SubmittableRecordActions
     {
         $submit = Action::make('submit')
             ->label('Submit')
-            ->icon('heroicon-o-check-circle')
+            ->icon(Heroicon::OutlinedCheckCircle)
             ->color('success')
             ->visible(fn (Model $record): bool => $record->getAttribute('docstatus') === DocStatus::Draft)
             ->action(function (Model $record, array $data): void {
@@ -60,14 +61,14 @@ trait SubmittableRecordActions
         if ($schema === []) {
             $submit->requiresConfirmation();
         } else {
-            $submit->form($schema);
+            $submit->schema($schema);
         }
 
         return [
             $submit,
             Action::make('cancel')
                 ->label('Cancel')
-                ->icon('heroicon-o-x-circle')
+                ->icon(Heroicon::OutlinedXCircle)
                 ->color('danger')
                 ->requiresConfirmation()
                 ->visible(fn (Model $record): bool => $record->getAttribute('docstatus') === DocStatus::Submitted)
