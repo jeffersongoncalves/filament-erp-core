@@ -2,8 +2,10 @@
 
 namespace JeffersonGoncalves\FilamentErp\Core\Resources\FiscalYears;
 
-use Filament\Forms\Form;
+use BackedEnum;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Core\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Core\FilamentErpCorePlugin;
@@ -15,7 +17,7 @@ use JeffersonGoncalves\FilamentErp\Core\Resources\FiscalYears\Tables\FiscalYears
 
 class FiscalYearResource extends Resource
 {
-    protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCalendarDays;
 
     protected static ?int $navigationSort = 4;
 
@@ -35,9 +37,9 @@ class FiscalYearResource extends Resource
         }
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return FiscalYearForm::configure($form);
+        return FiscalYearForm::configure($schema);
     }
 
     public static function table(Table $table): Table
