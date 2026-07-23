@@ -2,8 +2,10 @@
 
 namespace JeffersonGoncalves\FilamentErp\Core\Resources\TermsAndConditions;
 
-use Filament\Forms\Form;
+use BackedEnum;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Core\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Core\FilamentErpCorePlugin;
@@ -15,7 +17,7 @@ use JeffersonGoncalves\FilamentErp\Core\Resources\TermsAndConditions\Tables\Term
 
 class TermsAndConditionsResource extends Resource
 {
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedDocumentText;
 
     protected static ?int $navigationSort = 8;
 
@@ -45,9 +47,9 @@ class TermsAndConditionsResource extends Resource
         }
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return TermsAndConditionsForm::configure($form);
+        return TermsAndConditionsForm::configure($schema);
     }
 
     public static function table(Table $table): Table
